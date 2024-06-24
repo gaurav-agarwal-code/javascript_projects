@@ -1,0 +1,49 @@
+# Creating some small javascripts projects
+- ## Project 1
+Change backgound color as of box color upon clicking on the boxes<br>
+**HTML**
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            border: 3px solid black;
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            background-color: #212121;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; color: white;">
+    <div class="boxes">
+        <div class="box" style="background-color:aqua"><p></p></div>
+        <div class="box" style="background-color:blue"></div>
+        <div class="box" style="background-color:antiquewhite"></div>
+        <div class="box" style="background-color:aquamarine"></div>
+    </div>
+    <script src="javas.js"></script>
+</body>
+</html>
+```
+**Script**
+```js
+let body = document.querySelector("body")
+
+document.addEventListener("click", (box) => {
+    body.style.backgroundColor = box.target.style.backgroundColor;
+});
+```
+- ## Project 2
