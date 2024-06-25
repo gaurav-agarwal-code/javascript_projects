@@ -329,11 +329,3 @@ function newGame() {
 ```
 -   ## Project 5
 Get random background color on pressing start button<br>
-**HTML**
-```JS
-
-```
-**SCRIPT**
-```JS
-
-```
