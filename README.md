@@ -1,12 +1,12 @@
 # Creating some small javascripts projects
 **Projects**
-1.  Background color as box color
-2.  BMI calculator
-3.  Current time display
-4.  Guess the number Game
-5.  Random background color at at 0.5 sec
-6.  Keypress information
-7.  xml to fetch github photo and followers
+1.  [Background color as box color](#project-1)
+2.  [BMI calculator](#project-2)
+3.  [Current time display](#project-3)
+4.  [Guess the number Game](#project-4)
+5.  [Random background color at at 0.5 sec](#project-5)
+6.  [Keypress information](#project-6)
+7.  [XML Fetch github photo and followers](#project-7)
 8.  More
    
 - ## Project 1
@@ -56,6 +56,7 @@ document.addEventListener("click", (box) => {
     body.style.backgroundColor = box.target.style.backgroundColor;
 });
 ```
+
 - ## Project 2
 Calculate BMI by taking weight and height<br>
 **HTML**
@@ -124,6 +125,7 @@ document.getElementById("check").addEventListener('click', function(){
     
 })
 ```
+
 - ## Project 3
 Display current time at start<BR>
 **HTML**
@@ -327,5 +329,127 @@ function newGame() {
     randomNum = Math.floor(Math.random() * 100 + 1)
 }
 ```
+
 -   ## Project 5
-Get random background color on pressing start button<br>
+Get random color for background on pressing start button. Stop it as you wish<br>
+**HTMl**
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random background color</title>
+    <style>
+        *{
+            margin: 10px;
+        }
+        button{
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Background color change on click</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script src="javas.js"></script>
+</html>
+```
+**SCRIPT**
+```js
+const start = document.querySelector("#start");
+const stop = document.querySelector("#stop");
+let hex = "0123456789ABCDEF";
+
+function newColor() {
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+const changeColor = function () {
+    document.body.style.backgroundColor = newColor();
+}
+
+let interval;
+start.addEventListener('click', function () {
+    if (!interval) {
+        interval = setInterval(changeColor, 500);
+    }
+});
+
+stop.addEventListener('click', function () {
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+});
+```
+
+- ## Project 6
+Get the details of the key that is being pressed on this window<br>
+**HTML**
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypress details</title>
+    <style>
+        body{
+            background-color: #212121;
+            color: aliceblue;
+        }
+        table,tr,td,th{
+            border: 2px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+            border-color: beige;
+            color: orange;
+        }
+        div{
+            position: absolute;
+            top: 45vh;
+            left: 40vw;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Keycode</th>
+                <th>Code</th>
+            </tr>
+            <tr>
+                <td id="key"></td>
+                <td id="keycode"></td>
+                <td id="code"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="javas.js"></script>
+</html>
+```
+**Script**
+```js
+let key = document.getElementById("key")
+let keycode = document.getElementById("keycode")
+let code = document.getElementById("code")
+
+window.addEventListener('keydown', function (e) {
+    key.innerText = e.key === " " ? "space" : e.key;
+    keycode.innerHTML = e.keyCode
+    code.innerHTML = e.code
+})
+```
+
+- ## Project 7
+Fetch github photo and followers by providing username (Coming soon)
